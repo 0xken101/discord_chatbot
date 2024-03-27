@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Slacker quotes</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+    </head>
+    <body>
+        <div id="main">
+            <div id="menu">
+                <a href="/logout">Log out</a>
+            </div>
+            <h1>Slacker Quotes</h1>
+            <table id="quotes">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>User</th>
+                        <th>Channel</th>
+                        <th>Quote</th>
+                        <th>Image</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each quotes}}
+                    <tr>
+                        <td>{{this.id}}</td>
+                        <td>{{this.author}}</td>
+                        <td>{{this.channel_name}}</td>
+                        <td>{{this.text}}</td>
+                        <td>
+                            {{#if this.attachment_name}}
+                            <a href="/image/{{this.id}}/{{this.attachment_name}}">[Link to image]</a>
+                            {{/if}}
+                        </td>
+                        <td>{{dateformat this.timestamp}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript">
+            window.jQuery(document).ready($ => {
+                $('#quotes').DataTable();
+            });
+        </script>
+    </body>
+</html>
