@@ -10,7 +10,7 @@ jobs:
             - name: Publish to Registry
               uses: elgohr/Publish-Docker-Github-Action@v4
               with:
-                  name: ikkerens/discord_chatbot
-                  username: ikkerens
+                  name: 0xken101/discord_chatbot
+                  username: 0xken101
                   password: ${{ secrets.DOCKER_PASSWORD }}
                   snapshot: true
